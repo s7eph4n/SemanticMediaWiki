@@ -336,4 +336,15 @@ class Database {
 		return $this->aquireWriteConnection()->tableExists( $table, $fname );
 	}
 
+	/**
+	 * @see DatabaseBase::selectField
+	 *
+	 * @since 1.9.1.1
+	 *
+	 * @return mixed
+	 */
+	public function selectField( $table, $var, $cond = '', $fname = __METHOD__, $options = array() ) {
+		return $this->aquireReadConnection()->selectField( $table, $var, $cond, $fname, $options );
+	}
+
 }
