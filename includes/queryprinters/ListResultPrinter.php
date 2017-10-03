@@ -558,15 +558,22 @@ class ListResultPrinter extends ResultPrinter {
 				'default' => '',
 			],
 
-			'import-annotation' => [
-				'message' => 'smw-paramdesc-import-annotation',
-				'type' => 'boolean',
-				'default' => false,
-			],
 		];
 
 		$listFormatDefinitions = ParamDefinition::getCleanDefinitions( $listFormatDefinitions );
 
 		return array_merge( $definitions, $listFormatDefinitions );
+	}
+
+	/**
+	 * Returns if the result printer supports using a "full parse" instead of a
+	 * '[[SMW::off]]' . $wgParser->replaceVariables( $result ) . '[[SMW::on]]'
+	 *
+	 * @since 3.0
+	 *
+	 * @return boolean
+	 */
+	public function supportsRecursiveAnnotation() {
+		return true;
 	}
 }
